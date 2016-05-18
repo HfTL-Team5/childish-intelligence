@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<button id="StartButton">Start</button>
+
+<p id="AusgabeFeld"></p>
+  
+<input id="EingabeFeld" type="text"  name="chat">
+  
+<button id="SendeButton">Senden</button>
+  
+<script>
+var Status;     //Var --> speichert Gesprächsfortschritt
+var Name;		//Var --> speichert den Namen des Nutzers
+var Alter;		//Var --> speichert das Alter des Nutzers
+
+document.getElementById("StartButton").onclick = function() {first();};
+document.getElementById("SendeButton").onclick = function() {main();};
+
+function first()
+{
+	//Deklaration und Implementation
+	var Ausgabe;		//Var für Ausgaben... wird immer wieder überschrieben
+	Status = 0;		
+	//Programm Ablauf
+	Ausgabe = 'Wie heißt du?';
+    //document.getElementById("AusgabeFeld").innerHTML = Ausgabe;
+	Output("AusgabeFeld", Ausgabe);
+
+	return 0;
+}
+function main()				//wird aufgerufen, wenn der Sende Button gedrückt wird
+{
+    switch(Status)
+      {
+        case -1: ENDE(); break;
+        case 0: Ebene0(); break;
+        case 1: Ebene1(); break;
+        case 2: Ebene2(); break;
+        default: ENDE(); break;
+      }
+
+	return 0;
+}
+function Ebene0()
+{
+    //Deklaration und Implementation
+	var Ausgabe;		//Var für Ausgaben... wird immer wieder überschrieben
+		
+	Name = getText("EingabeFeld");
+	Ausgabe = 'Hallo ' + Name + ', möchtest du an einer kurzen Umfrage teilnehmen?';
+	Output("AusgabeFeld", Ausgabe);
+    Status = 1;
+  
+    return 0;
+}
+function Ebene1()
+{
+    var Eingabe;
+    var Ausgabe;
+    Eingabe = getYesNo("EingabeFeld");
+    if (Eingabe == 'Ja')
+      {
+        Ausgabe = 'Schön, dass du dir die Zeit nimmst.';
+        Output("AusgabeFeld", Ausgabe);
+        Status = 2;
+      }
+    else if (Eingabe == 'Nein')
+      {
+        Ausgabe = 'Schade, vielleicht findest du ein anderes mal Zeit!';
+        Output("AusgabeFeld", Ausgabe);
+        Status = -1;
+      }
+    else
+      {
+        Output("AusgabeFeld", Eingabe);
+      }
+  
+    return 0;
+}
+function Ebene2()
+{
+    var Eingabe;
+    var Ausgabe;   
+    Ausgabe = 'Wie alt bit du?';
+    Output("AusgabeFeld", Ausgabe);
+    Eingabe = getText("EingabeFeld");
+    if (Eingabe <= 18)
+      {
+        Ausgabe = 'Witzig. Genau wie mein Sohn.';
+        Output("AusgabeFeld", Ausgabe);
+        Status = 3;
+      }
+    else if ((Eingabe > 18) && (Eingabe < 40))
+      {
+        Ausgabe = 'Witzig. Genauso alt wie mein Nachbar.';
+        Output("AusgabeFeld", Ausgabe);
+        Status = 4;    
+      }
+    else if ((Eingabe <= 40) && (Eingabe < 100))
+      {
+        Ausgabe = 'Witzig. Genauso alt wie mein Vater.';
+        Output("AusgabeFeld", Ausgabe);
+        Status = 4;
+      }
+    else if (Eingabe >= 100)
+      {
+        Ausgabe = 'Das erscheint mir sehr unwahrscheinlich.';
+        Output("AusgabeFeld", Ausgabe);
+        Status = 4;
+      }
+  
+    return 0;
+}
+function ENDE()
+{
+    Ausgabe = 'Danke, dass du dir die Zeit genommen hast. Ich hoffe wir sprechen uns bald wieder.';
+    Output("AusgabeFeld", Ausgabe);
+  
+    return 0;
+}
+
+function getText (ID)  					//für Text Eingaben
+{
+	//Deklaration und Initalisierung      	
+	var Eingabe;                    //String in dem die Eingabe gespeichert wird
+	//Eingabe lesen
+    Eingabe = document.getElementById(ID).value;    	//ID: Input für Eingabefeld
+  
+    return Eingabe;
+}
+function getYesNo (ID)					//für Entscheidungsfragen
+{
+    //Deklaration und Initalisierung
+      	var Eingabe;
+      	var J = false;
+      	var N = false;
+	    var Entscheidung;
+      //Eingabe lesen
+      	Eingabe = document.getElementById(ID).value;    	//ID: Input für Eingabefeld
+      //Eingabe Auswerten
+    	Eingabe = Eingabe.toUpperCase();                         	//alles in Großbuchstaben umwandeln
+      //Eingabe Verarbeiten
+      	if (Eingabe.indexOf('JA') != -1)    //String enthält JA
+      	{
+            Entscheidung = 'Ja';
+            J = true;
+      	}
+      	if (Eingabe.indexOf('NEIN') != -1)    //String enthält NEIN
+      	{
+            Entscheidung = 'Nein';
+            N = true;
+      	}
+      	if (( (Eingabe.indexOf('JA') == -1) && (Eingabe.indexOf('NEIN') == -1) ) || ( (J === true) && (N === true) )) //String ist unverständlich
+      	{
+            Entscheidung = 'Ich glaube ich habe das nicht genau verstanden! Antworte bitte mit Ja oder Nein';
+      	}
+
+	return Entscheidung;
+}
+function Output (ID, Text)				//Zur Text Ausgabe
+{
+	document.getElementById(ID).innerHTML = Text;
+
+	return 0;
+}
+</script>
+</body>
+</html>
