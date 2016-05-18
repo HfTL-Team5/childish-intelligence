@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html">
+	<head>
+		<meta http-equiv="Content-type" content="text/html" charset="utf-8">
+		<title>Chat</title>
+		<style>
+			h2 {
+				text-align: center;
+			}
+			#chat, table {
+				margin: 0 auto;
+			}
+			#chat {
+				border: 3px solid #0ff;
+				height: 300px;
+				margin: 0 auto;
+				overflow-x: none;
+				overflow-y: auto;
+				width: 200px;
+			}
+			p {
+				margin: 0;
+			}
+		</style>
+		<script type="text/javascript">
+			function Dialog() {
+			var NameVar = document.getElementById('message').value;
+			NameVar = name;
+			chat.innerHTML = "<p><b>PC: </b>Hallo! Wie heisst du?</p><p><b>User: </b>"+name+"</p>"+"<p><b>PC: </b>Nett dich kennenzulernen, "+name+"</p>";
+			}
+		</script>
+	</head>
+	<body>
+		<h2>Chat</h2>
+		<div id="chat"><p><b>PC: </b>Hallo! Wie heisst du?</p>
+		</div>
+		
+		<table>
+			<!--<tr>
+				<td>Name:</td>
+				<td>
+					<input type="text" id="name" />
+				</td>
+			</tr>-->
+			<tr>
+				<td>Massage:</td>
+				<td>
+					<input type="text" id="message" />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="button" value="Send" onclick="Dialog()"/>
+				</td>
+			</tr>
+	</body>
+</html>
