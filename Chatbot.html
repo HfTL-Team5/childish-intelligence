@@ -14,6 +14,7 @@
 var Status;     //Var --> speichert Gesprächsfortschritt
 var Name;		//Var --> speichert den Namen des Nutzers
 var Alter;		//Var --> speichert das Alter des Nutzers
+var Beruf;		//Var --> speichert den Beruf des Nutzers
 
 document.getElementById("StartButton").onclick = function() {first();};
 document.getElementById("SendeButton").onclick = function() {main();};
@@ -38,6 +39,17 @@ function main()				//wird aufgerufen, wenn der Sende Button gedrückt wird
         case 0: Ebene0(); break;
         case 1: Ebene1(); break;
         case 2: Ebene2(); break;
+        case 3: Ebene3(); break;
+        case 4: Ebene4(); break;
+        case 5: Ebene5(); break;
+        case 6: Ebene6(); break;
+        case 7: Ebene7(); break;
+        case 8: Ebene8(); break;
+        case 9: Ebene9(); break;
+        case 10: Ebene10(); break;
+        case 11: Ebene11(); break;
+        case 12: Ebene12(); break;
+        case 13: Ebene13(); break;
         default: ENDE(); break;
       }
 
@@ -83,39 +95,213 @@ function Ebene2()
 {
     var Eingabe;
     var Ausgabe;   
-    Ausgabe = 'Wie alt bit du?';
+    Ausgabe = 'Wie alt bist du?';
     Output("AusgabeFeld", Ausgabe);
-    Eingabe = getText("EingabeFeld");
-    if (Eingabe <= 18)
+    Alter = getText("EingabeFeld");
+    if (Alter <= 18)
       {
-        Ausgabe = 'Witzig. Genau wie mein Sohn.';
+        Ausgabe = 'Witzig. Genau, wie mein Sohn.';
+        Output("AusgabeFeld", Ausgabe);
+        Ausgabe = 'Gehst du noch zur Schule?';
         Output("AusgabeFeld", Ausgabe);
         Status = 3;
       }
-    else if ((Eingabe > 18) && (Eingabe < 40))
+    else if ((Alter > 18) && (Alter < 40))
       {
-        Ausgabe = 'Witzig. Genauso alt wie mein Nachbar.';
+        Ausgabe = 'Witzig. Genauso alt, wie mein Nachbar.';
+        Output("AusgabeFeld", Ausgabe);
+        Ausgabe = 'Bist du zur Zeit berufstätig?';
         Output("AusgabeFeld", Ausgabe);
         Status = 4;    
       }
-    else if ((Eingabe <= 40) && (Eingabe < 100))
+    else if ((Alter >= 40) && (Alter < 100))
       {
-        Ausgabe = 'Witzig. Genauso alt wie mein Vater.';
+        Ausgabe = 'Witzig. Genauso alt, wie mein Vater.';
+        Output("AusgabeFeld", Ausgabe);
+        Ausgabe = 'Bist du zur Zeit berufstätig?';
         Output("AusgabeFeld", Ausgabe);
         Status = 4;
       }
-    else if (Eingabe >= 100)
+    else if (Alter >= 100)
       {
         Ausgabe = 'Das erscheint mir sehr unwahrscheinlich.';
+        Output("AusgabeFeld", Ausgabe);
+        Ausgabe = 'Bist du zur Zeit berufstätig?';
         Output("AusgabeFeld", Ausgabe);
         Status = 4;
       }
   
     return 0;
 }
+function Ebene3()
+{
+  var Eingabe;
+  var Ausgabe;
+  Eingabe = getYesNo("EingabeFeld");
+  
+  if (Eingabe == 'Ja')                          //Noch ergänzen
+      {
+        Ausgabe = 'Noch ergänzen...';
+        Output("AusgabeFeld", Ausgabe);
+        Status = 5;
+      }
+    else if (Eingabe == 'Nein')
+      {
+        Ausgabe = 'Bist du gerade auf der Suche nach einer Arbeit?';
+        Output("AusgabeFeld", Ausgabe);
+        Ausgabe = 'Mit ' + Alter + ' Jahren findet man doch bestimmt leicht eine Stelle?';
+        Output("AusgabeFeld", Ausgabe);
+        Status = 6;
+      }
+    else
+      {
+        Output("AusgabeFeld", Eingabe);
+      }
+  
+  return 0;
+}
+function Ebene4()
+{
+  var Eingabe;
+  var Ausgabe;
+  Eingabe = getYesNo("EingabeFeld");
+  if (Eingabe == 'Ja')
+      {
+        Ausgabe = 'Arbeitest du in Vollzeit oder Teilzeit?';
+        Output("AusgabeFeld", Ausgabe);
+        Status = 7;
+      }
+    else if (Eingabe == 'Nein')
+      {
+        Ausgabe = 'Dann befindest du dich bestimmt gerade in einer Ausbildung?';
+        Output("AusgabeFeld", Ausgabe);
+        Ausgabe = 'Oder studierst du momentan?';
+        Output("AusgabeFeld", Ausgabe);
+        Status = 8;
+      }
+    else
+      {
+        Output("AusgabeFeld", Eingabe);
+      }
+  
+  return 0;
+}
+function Ebene5()                  //Noch einfügen
+{
+  
+  
+  return 0;
+}
+function Ebene6()
+{
+  var Ausgabe;
+  Ausgabe = 'Ich hoffe du findest bald das Richtige für dich.';
+  Output("AusgabeFeld", Ausgabe);
+  Status = -1;
+  
+  return 0;
+}
+function Ebene7()
+{
+  var J = false;
+  var N = false;
+  var Eingabe;
+  var Ausgabe;
+  Eingabe = getText("EingabeFeld");
+  //Eingabe Auswerten
+  Eingabe = Eingabe.toUpperCase();                         	//alles in Großbuchstaben umwandeln
+  //Eingabe Verarbeiten
+  if (Eingabe.indexOf('VOLLZEIT') != -1)    //String enthält Vollzeit
+      	{
+            J = true;
+            Status = 10;
+      	}
+  if (Eingabe.indexOf('TEILZEIT') != -1)    //String enthält Teilzeit
+      	{
+            N = true;
+            Status = 11;
+      	}
+  if (( (Eingabe.indexOf('VOLLZEIT') == -1) && (Eingabe.indexOf('TEILZEIT') == -1) ) || ( (J === true) && (N === true) ))    //String ist unverständlich
+      	{
+            Ausgabe = 'Ich glaube ich habe das nicht genau verstanden! Kannst du das bitte nocheinmal wiederholen';
+            Output("AusgabeFeld", Ausgabe);
+      	}
+  
+  return 0;
+}
+function Ebene8()
+{
+  var Eingabe;
+  var Ausgabe;
+  Eingabe = getYesNo("EingabeFeld");
+  if (Eingabe == 'Ja')
+      {
+        Ausgabe = 'Was lernst du denn gerade?';
+        Output("AusgabeFeld", Ausgabe);
+        Status = 9;
+      }
+    else if (Eingabe == 'Nein')
+      {
+        Ausgabe = 'Bist du gerade auf der Suche nach einer Arbeit?';
+        Output("AusgabeFeld", Ausgabe);
+        Ausgabe = 'Mit ' + Alter + ' Jahren findet man doch bestimmt leicht eine Stelle?';
+        Output("AusgabeFeld", Ausgabe);
+        Status = 6;
+      }
+    else
+      {
+        Output("AusgabeFeld", Eingabe);
+      }
+  
+  return 0;
+}
+function Ebene9()             //Noch einfügen
+{
+  
+  
+  return 0;
+}
+function Ebene10()
+{ 
+  var Ausgabe;
+  Ausgabe = 'Was bist du denn hauptberuflich?';
+  Output("AusgabeFeld", Ausgabe);
+  Beruf = getText("EingabeFeld");
+  Status = 12;
+  
+  return 0;
+}
+function Ebene11()
+{ 
+  var Ausgabe;
+  Ausgabe = 'Hast du noch einen Nebenjob?';
+  Output("AusgabeFeld", Ausgabe);
+  Status = 10;
+  
+  return 0;
+}
+function Ebene12()
+{
+  var Ausgabe;
+  Ausgabe = 'Was verdienst du als ' + Beruf + ' ?';
+  Output("AusgabeFeld", Ausgabe);
+  Status = 13;
+  
+  return 0;
+}
+function Ebene13()
+{
+  var Ausgabe;
+  Ausgabe = 'Das klingt ziemlich gut.';
+  Output("AusgabeFeld", Ausgabe);
+  Status = -1;
+  
+  return 0;
+}
 function ENDE()
 {
-    Ausgabe = 'Danke, dass du dir die Zeit genommen hast. Ich hoffe wir sprechen uns bald wieder.';
+  var Ausgabe;  
+  Ausgabe = 'Danke, dass du dir die Zeit genommen hast. Ich hoffe wir sprechen uns bald wieder.';
     Output("AusgabeFeld", Ausgabe);
   
     return 0;
