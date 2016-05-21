@@ -11,7 +11,7 @@
 <button id="SendeButton">Senden</button>
   
 <script>
-var Status;     //Var --> speichert Gesprächsfortschritt
+var Status;     	//Var --> speichert Gesprächsfortschritt
 var Name;		//Var --> speichert den Namen des Nutzers
 var Alter;		//Var --> speichert das Alter des Nutzers
 var Beruf;		//Var --> speichert den Beruf des Nutzers
@@ -26,7 +26,7 @@ function first()
 	Status = 0;		
 	//Programm Ablauf
 	Ausgabe = 'Wie heißt du?';
-    //document.getElementById("AusgabeFeld").innerHTML = Ausgabe;
+    	//document.getElementById("AusgabeFeld").innerHTML = Ausgabe;
 	Output("AusgabeFeld", Ausgabe);
 
 	return 0;
@@ -48,8 +48,8 @@ function main()				//wird aufgerufen, wenn der Sende Button gedrückt wird
         case 9: Ebene9(); break;
         case 10: Ebene10(); break;
         case 11: Ebene11(); break;
+	case 11.1: Ebene11_1(); break;
         case 12: Ebene12(); break;
-        case 13: Ebene13(); break;
         default: ENDE(); break;
       }
 
@@ -57,15 +57,15 @@ function main()				//wird aufgerufen, wenn der Sende Button gedrückt wird
 }
 function Ebene0()
 {
-    //Deklaration und Implementation
+    	//Deklaration und Implementation
 	var Ausgabe;		//Var für Ausgaben... wird immer wieder überschrieben
 		
 	Name = getText("EingabeFeld");
 	Ausgabe = 'Hallo ' + Name + ', möchtest du an einer kurzen Umfrage teilnehmen?';
 	Output("AusgabeFeld", Ausgabe);
-    Status = 1;
+    	Status = 1;
   
-    return 0;
+    	return 0;
 }
 function Ebene1()
 {
@@ -213,13 +213,16 @@ function Ebene7()
   //Eingabe Verarbeiten
   if (Eingabe.indexOf('VOLLZEIT') != -1)    //String enthält Vollzeit
       	{
-            J = true;
-            Status = 10;
+		Ausgabe = 'Toll! Ich momentan auch.';
+        	Ebene11_1();
+		J = true;
       	}
   if (Eingabe.indexOf('TEILZEIT') != -1)    //String enthält Teilzeit
       	{
-            N = true;
-            Status = 11;
+		Ausgabe = 'Toll! Ich momentan auch.';
+        	Output("AusgabeFeld", Ausgabe);
+		N = true;
+            	Status = 11;
       	}
   if (( (Eingabe.indexOf('VOLLZEIT') == -1) && (Eingabe.indexOf('TEILZEIT') == -1) ) || ( (J === true) && (N === true) ))    //String ist unverständlich
       	{
@@ -263,39 +266,39 @@ function Ebene9()             //Noch einfügen
 }
 function Ebene10()
 { 
-  var Ausgabe;
-  Ausgabe = 'Was bist du denn hauptberuflich?';
-  Output("AusgabeFeld", Ausgabe);
+  var Ausgabe;  
   Beruf = getText("EingabeFeld");
+  Ausgabe = 'Was verdienst du als ' + Beruf + ' ?';
+  Output("AusgabeFeld", Ausgabe);
   Status = 12;
-  
+
   return 0;
+}
+function Ebene11_1()
+{
+	var Ausgabe;
+	Ausgabe = 'Was bist du denn hauptberuflich?';
+ 	Output("AusgabeFeld", Ausgabe);
+	Status = 10;
+
+	return 0;
 }
 function Ebene11()
 { 
   var Ausgabe;
   Ausgabe = 'Hast du noch einen Nebenjob?';
   Output("AusgabeFeld", Ausgabe);
-  Status = 10;
-  
+  Status = 11.1;
+
   return 0;
 }
 function Ebene12()
 {
   var Ausgabe;
-  Ausgabe = 'Was verdienst du als ' + Beruf + ' ?';
-  Output("AusgabeFeld", Ausgabe);
-  Status = 13;
-  
-  return 0;
-}
-function Ebene13()
-{
-  var Ausgabe;
   Ausgabe = 'Das klingt ziemlich gut.';
   Output("AusgabeFeld", Ausgabe);
   Status = -1;
-  
+
   return 0;
 }
 function ENDE()
