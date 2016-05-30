@@ -4,36 +4,9 @@
 	<meta http-equiv="Content-type" content="text/html" charset="utf-8">
 	<title>Chat</title>
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Indie+Flower|Noto+Sans">
-	<style>
-		h2
-		  {
-			text-align: center;
-			font-family: 'Indie Flower', serif;
-			font-size: 48px;
-		  }
-		#AuagabeFeld, table
-		  {
-			margin: 0 auto;
-		  }
-		#AusgabeFeld
-		  {
-			border: 3px solid #0ff;
-			margin: 0 auto;
-			overflow-x: none;
-			overflow-y: auto;
-			width: 500px;
-			font-family: 'Noto Sans', serif;
-		  }
-        	td
-		  { 
-          		vertical-align: top;
-          		align: center;
-        	  }
-		p
-		  {
-			margin: 0;
-		  }
-	</style>
+	<link rel="stylesheet" type="text/css" href="CBcss.css">
+	<link rel="javascript" type="text/javascript" href="CBjs.js">
+	<script type="text/javascript" src="CBjs.js"></script>
   </head>
   <body>
 	<h2>ChatBot</h2>
@@ -58,6 +31,7 @@
 			</td>
 		</tr>
 	</table>
+  </body>
   <script id="jsbin-javascript">
 //globale Variablen
 	var Status;     	//Var --> speichert Gesprächsfortschritt
@@ -824,5 +798,6 @@
       			lastRow = lastRow - 1;
     		  }
   		return 0;
-	  }</script></body>
+	  }
+  </script>
 </html>
