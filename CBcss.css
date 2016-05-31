@@ -1,28 +1,32 @@
 h2
 {
-			text-align: center;
-			font-family: 'Indie Flower', serif;
-			font-size: 48px;
+	text-align: center;
+	font-family: 'Indie Flower', serif;
+	font-size: 48px;
 }
 #AuagabeFeld, table
 {
-			margin: 0 auto;
+	margin: 0 auto;
 }
 #AusgabeFeld
 {
-			border: 3px solid #0ff;
-			margin: 0 auto;
-			overflow-x: none;
-			overflow-y: auto;
-			width: 500px;
-			font-family: 'Noto Sans', serif;
+	border: 3px solid #0ff;
+	margin: 0 auto;
+	overflow-x: none;
+	overflow-y: auto;
+	width: 500px;
+	font-family: 'Noto Sans', serif;
 }
 td
 { 
-          		vertical-align: top;
-          		align: center;
+    vertical-align: top;
+    align: center;
+}
+#EingabeFeld
+{
+     width: 355px;
 }
 p
 {
-			margin: 0;
+	margin: 0;
 }
