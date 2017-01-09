@@ -9,7 +9,7 @@ window.onload=function(){
 	document.getElementById("StartButton").onclick = function() {first();};
 	document.getElementById("SendeButton").onclick = function() {main();};
 	//Funktionen
-	function first()			//wird aufgerufen, wenn der Start Button gedrьckt wird
+	function first()			//wird aufgerufen, wenn der Start Button gedrückt wird
 	  {
 		//alles in Ausgabefeld lцschen
 		remove();
@@ -23,7 +23,7 @@ window.onload=function(){
         ErsterAufruf = 1;
 		return 0;
 	  }
-	function main()				//wird aufgerufen, wenn der Sende Button gedrьckt wird
+	function main()				//wird aufgerufen, wenn der Sende Button gedrückt wird
 	  {
   		if (ErsterAufruf != 1)
           {
@@ -35,7 +35,7 @@ window.onload=function(){
           }
         else if (Status != -2)
   		  {
-			//Eingabefeld scannen und inChat fenster ьbernehmen
+			//Eingabefeld scannen und inChat fenster übernehmen
 			var Eingabe = getText("EingabeFeld");
 			Output("AusgabeFeld", Eingabe, 'USER');  
 			switch(Status)
@@ -237,7 +237,7 @@ window.onload=function(){
 	function Ebene6()
 	  {
   		var Ausgabe;
-  		Ausgabe = 'Ich hoffe du findest bald das Richtige fьr dich.';
+  		Ausgabe = 'Ich hoffe du findest bald das Richtige für dich.';
         SpeechOut(Ausgabe);
   		Output("AusgabeFeld", Ausgabe, 'PC');
   		Status = -1;
@@ -251,9 +251,9 @@ window.onload=function(){
   		var Ausgabe;
   		Eingabe = getText("EingabeFeld");
   		//Eingabe Auswerten
-  		Eingabe = Eingabe.toUpperCase();                         	//alles in GroЯbuchstaben umwandeln
+  		Eingabe = Eingabe.toUpperCase();                         	//alles in Großbuchstaben umwandeln
   		//Eingabe Verarbeiten
-  		if (Eingabe.indexOf('VOLLZEIT') != -1)    //String enthдlt Vollzeit
+  		if (Eingabe.indexOf('VOLLZEIT') != -1)    //String enthält Vollzeit
       		  {
 			Ausgabe = 'Toll! Ich momentan auch.';
                 SpeechOut(Ausgabe);
@@ -367,7 +367,7 @@ window.onload=function(){
 		//Deklaration und Initalisierung      	
 		var Eingabe;                    //String in dem die Eingabe gespeichert wird
 		//Eingabe lesen
-		Eingabe = document.getElementById(ID).value;    	//ID: Input fьr Eingabefeld
+		Eingabe = document.getElementById(ID).value;    	//ID: Input für Eingabefeld
   
 		return Eingabe;
 	  }
@@ -379,7 +379,7 @@ window.onload=function(){
       		var N = false;
 		var Entscheidung;
 		//Eingabe lesen
-      		Eingabe = document.getElementById(ID).value;    		//ID: Input fьr Eingabefeld
+      		Eingabe = document.getElementById(ID).value;    		//ID: Input für Eingabefeld
 		//Eingabe Auswerten
     		Eingabe = Eingabe.toUpperCase();                         	//alles in GroЯbuchstaben umwandeln
 		//Eingabe Verarbeiten
